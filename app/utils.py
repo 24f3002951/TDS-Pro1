@@ -4,6 +4,10 @@ import logging
 import asyncio
 API_SECRET = os.getenv("API_SECRET", "24f3002951")
 
+# The API will be deployed to Hugging Face Spaces
+# For instructor: Replace {username} with student's identifier
+API_URL = "https://24f3002951-llm-code-deployment.hf.space/handle-task"
+
 
 logger = logging.getLogger(__name__)
 
