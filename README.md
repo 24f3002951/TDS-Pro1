@@ -22,11 +22,49 @@ This Space provides a production-grade FastAPI backend for automated application
 - **Secrets Management**: Reads secrets via Hugging Face Spaces environment for maximum security (never hardcoded).
 - **GitHub Automation**: Automatically creates public repos, populates README and LICENSE, and enables GitHub Pages.
 
-### Usage
+### API Information
+
+- **API URL**: `https://24f3002951-llm-code-deployment.hf.space/handle-task`
+- **Secret**: `24f3002951`
+
+### API Usage
+
+Make a POST request to the API URL with the following JSON structure:
+```json
+{
+    "email": "user@example.com",
+    "secret": "24f3002951",
+    "task": "task_name",
+    "round": 1,
+    "nonce": "some_nonce",
+    "brief": "task description",
+    "checks": {},
+    "evaluation_url": "https://evaluation-server/endpoint"
+}
+```
+
+### Response Format
+
+Successful response (200 OK):
+```json
+{
+    "status": "success",
+    "message": "Secret validated, task accepted for processing."
+}
+```
+
+Error response (401 Unauthorized):
+```json
+{
+    "detail": "Invalid secret"
+}
+```
+
+### Development Setup
 
 1. Set up required Space secrets (secrets and tokens via the Spaces UI).
 2. Deploy or push your code to this Space.
-3. POST a task request (see `/handle-task` endpoint documentation).
+3. POST a task request using the format shown above.
 
 ### Development
 
